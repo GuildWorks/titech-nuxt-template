@@ -8,4 +8,6 @@
 
 ## 起動
 1. yarn serve
-2. localhost:8080へアクセス
+2. yarn api
+3. localhost:8080へアクセス
+4. localhost:3000へアクセス

@@ -10,44 +10,21 @@
 
 <script>
 import UserListElement from "./UserListElement.vue";
+import * as fromUsers from "@/store/modules/users"
+import { mapGetters } from 'vuex'
 
 export default {
   name: "UserList",
   components: {
     UserListElement
   },
-  data() {
-    return {
-      users: [
-        {
-          id: 1,
-          name: `太郎`,
-          email: `tarou@example.com`,
-          image: require(`../assets/logo.png`),
-          team: {
-            name: `チームA`
-          }
-        },
-        {
-          id: 2,
-          name: `次郎`,
-          email: `zirou@example.com`,
-          image: require(`../assets/logo.png`),
-          team: {
-            name: `チームB`
-          }
-        },
-        {
-          id: 3,
-          name: `三郎`,
-          email: `saburou@example.com`,
-          image: require(`../assets/logo.png`),
-          team: {
-            name: `チームC`
-          }
-        }
-      ]
-    };
+  computed: {
+    ...mapGetters([
+      'users'
+    ])
+  },
+  created() {
+    this.$store.dispatch(fromUsers.FETCH_USERS)
   }
 };
 </script>
