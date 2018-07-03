@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { usersStore } from "./modules/users";
+import { users } from "./modules/users";
 
 Vue.use(Vuex);
 
@@ -9,8 +9,9 @@ const store = new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
-    usersStore
-  }
+    users
+  },
+  strict: process.env.NODE_ENV !== "production"
 });
 
 export default store;

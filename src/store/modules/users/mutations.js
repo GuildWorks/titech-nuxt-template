@@ -1,7 +1,7 @@
 import * as types from "./mutation-types";
 
 export default {
-  [types.FETCH_USERS](state, users) {
+  [types.RECEIVE_USERS](state, users) {
     state.all = users;
   }
-}
+};

@@ -18,4 +18,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+img {
+  width: 100px;
+}
 </style>

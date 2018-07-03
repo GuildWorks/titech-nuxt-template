@@ -10,21 +10,17 @@
 
 <script>
 import UserListElement from "./UserListElement.vue";
-import * as fromUsers from "@/store/modules/users"
-import { mapGetters } from 'vuex'
 
 export default {
   name: "UserList",
   components: {
     UserListElement
   },
-  computed: {
-    ...mapGetters([
-      'users'
-    ])
-  },
-  created() {
-    this.$store.dispatch(fromUsers.FETCH_USERS)
+  props: {
+    users: {
+      type: Array,
+      required: true
+    }
   }
 };
 </script>

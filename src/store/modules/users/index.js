@@ -2,7 +2,8 @@ import actions from "./actions";
 import getters from "./getters";
 import mutations from "./mutations";
 
-export const usersStore = {
+export const users = {
+  namespaced: true,
   state: {
     all: []
   },
@@ -10,5 +11,3 @@ export const usersStore = {
   getters,
   mutations
 };
-
-export * from "./mutation-types"

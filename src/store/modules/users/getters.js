@@ -1,5 +1,7 @@
+import * as types from "./getter-types";
+
 export default {
-  users(state) {
+  [types.ALL_USERS](state) {
     return state.all;
   }
-}
+};
