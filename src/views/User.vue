@@ -1,5 +1,13 @@
 <template>
-  <user-profile></user-profile>
+  <div>
+    <v-content>
+      <v-container fill-height>
+        <v-layout justify-center align-center>
+          <user-profile></user-profile>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </div>
 </template>
 
 <script>

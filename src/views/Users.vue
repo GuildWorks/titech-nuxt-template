@@ -1,5 +1,13 @@
 <template>
-  <user-list :users="users"></user-list>
+  <div>
+    <v-content>
+      <v-container fill-height>
+        <v-layout justify-center align-center>
+          <user-list :users="users"></user-list>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </div>
 </template>
 
 <script>
