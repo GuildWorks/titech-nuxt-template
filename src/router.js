@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Users from "./views/Users.vue";
+import CreateUser from "./views/CreateUser.vue";
 import User from "./views/User.vue";
 import Layout from "@/components/Layout.vue";
 
@@ -24,6 +25,11 @@ export default new Router({
           path: "/users",
           name: "users",
           component: Users
+        },
+        {
+          path: "/users/new",
+          name: "newUser",
+          component: CreateUser
         },
         {
           path: "/users/:userId",

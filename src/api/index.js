@@ -6,6 +6,9 @@ export default {
   users: {
     getData() {
       return axios.get("users");
+    },
+    createData(params) {
+      return axios.post("users", params);
     }
   }
 };
