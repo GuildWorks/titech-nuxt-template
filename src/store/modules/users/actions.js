@@ -12,5 +12,16 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+  [types.CREATE_USER]({ commit }, params) {
+    api.users
+      .createData(params)
+      .then(response => {
+        console.log(response.data);
+        // commit(mutationTypes.ADD_USERS, response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
