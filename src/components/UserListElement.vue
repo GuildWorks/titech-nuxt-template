@@ -1,11 +1,21 @@
 <template>
-  <div>
-    <p>{{ user.id }}</p>
-    <img :src="user.image">
-    <p>{{ user.name }}</p>
-    <p>{{ user.email }}</p>
-    <p>{{ user.team.name }}</p>
-  </div>
+  <v-list-tile>
+    <v-list-tile-avatar>
+      <img :src="user.image" alt="">
+    </v-list-tile-avatar>
+    <v-list-tile-content width="50px">
+      <v-list-tile-title v-text="user.id"></v-list-tile-title>
+    </v-list-tile-content>
+    <v-list-tile-content>
+      <v-list-tile-title v-text="user.name"></v-list-tile-title>
+    </v-list-tile-content>
+    <v-list-tile-content>
+      <v-list-tile-title v-text="user.email"></v-list-tile-title>
+    </v-list-tile-content>
+    <v-list-tile-content>
+      <v-list-tile-title v-text="user.team.name"></v-list-tile-title>
+    </v-list-tile-content>
+  </v-list-tile>
 </template>
 
 <script>
@@ -18,7 +28,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-img {
-  width: 100px;
-}
 </style>
