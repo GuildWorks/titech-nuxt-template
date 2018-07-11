@@ -11,19 +11,19 @@
         <v-list-tile-content>
           <v-list-tile to="/users/new">
             <v-list-tile-action>
-              <v-icon>fas fa-address-card</v-icon>
+              <v-icon>person_add</v-icon>
             </v-list-tile-action>
             ユーザー作成（仮）
           </v-list-tile>
           <v-list-tile to="/users">
             <v-list-tile-action>
-              <v-icon>fas fa-address-card</v-icon>
+              <v-icon>person</v-icon>
             </v-list-tile-action>
             ユーザー一覧
           </v-list-tile>
           <v-list-tile to="/">
             <v-list-tile-action>
-              <v-icon>fas fa-users</v-icon>
+              <v-icon>people</v-icon>
             </v-list-tile-action>
             チーム一覧
           </v-list-tile>
@@ -60,7 +60,7 @@
 export default {
   name: "HeaderToolBar",
   data: () => ({
-    drawer: true
+    drawer: false
   }),
   props: {
     source: String
