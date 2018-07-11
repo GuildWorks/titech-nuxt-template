@@ -9,6 +9,6 @@ export default {
     },
     createData(params) {
       return axios.post("users", params);
-    },
+    }
   }
 };

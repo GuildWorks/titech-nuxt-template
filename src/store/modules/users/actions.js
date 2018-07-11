@@ -17,6 +17,7 @@ export default {
     api.users
       .createData(params)
       .then(response => {
+        console.log(commit);
         console.log(response.data);
         // commit(mutationTypes.ADD_USERS, response.data);
       })
