@@ -2,24 +2,31 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Users from "./views/Users.vue";
-import CreateUser from "./views/CreateUser.vue";
+import SignUp from "./views/SignUp.vue";
 import User from "./views/User.vue";
 import Layout from "@/components/Layout.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const Auth = {
+  loggedIn: false,
+  login: function() { this.loggedIn = true },
+  logout: function() { this.loggedIn = false }
+};
+
+const router = new Router({
   routes: [
     {
       path: "/",
       name: "layout",
       component: Layout,
-      redirect: { name: "home" },
+      redirect: {name: "home"},
       children: [
         {
           path: "/home",
           name: "home",
-          component: Home
+          component: Home,
+          meta: {requiresAuth: true}
         },
         {
           path: "/users",
@@ -29,14 +36,29 @@ export default new Router({
         {
           path: "/users/new",
           name: "newUser",
-          component: CreateUser
+          component: SignUp
         },
         {
           path: "/users/:userId",
           name: "user",
           component: User
         }
-      ]
+      ],
+    },
+    {
+      path: "/sign_up",
+      name: "signUp",
+      component: SignUp
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth) && !Auth.loggedIn) {
+    next({ path: '/sign_up', query: { redirect: to.fullPath }});
+  } else {
+    next();
+  }
+});
+
+export default router;

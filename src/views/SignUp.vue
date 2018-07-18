@@ -16,6 +16,13 @@
               label="E-mail"
               required
             ></v-text-field>
+            <v-text-field
+              v-model="password"
+              :rules="passwordRules"
+              label="Password"
+              type="password"
+              required
+            ></v-text-field>
             <v-btn
               large
               color="primary"
@@ -41,18 +48,27 @@ export default {
     return {
       name: "",
       email: "",
+      password: "",
       valid: true,
       nameRules: [v => !!v || "Name is required"],
       emailRules: [
         v => !!v || "E-mail is required",
         v => /.+@.+/.test(v) || "E-mail must be valid"
-      ]
+      ],
+      passwordRules: [
+        v => !!v || "Password is required",
+        v => v.length > 6 || "Password is more 6 characters"
+      ],
     };
   },
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        this.createUser({ name: this.name, email: this.email });
+        this.createUser({
+          name: this.name,
+          email: this.email,
+          password: this.password
+        });
       }
     },
     ...mapActions("users", {
