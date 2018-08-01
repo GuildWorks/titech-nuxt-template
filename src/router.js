@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Users from "./views/Users.vue";
+import SignIn from "./views/SignIn.vue";
 import SignUp from "./views/SignUp.vue";
 import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
@@ -59,7 +60,12 @@ const router = new Router({
       path: "/sign_up/complete",
       name: "signUpComplete",
       component: SignUpComplete
-    }
+    },
+    {
+      path: "/sign_in",
+      name: "signIn",
+      component: SignIn
+    },
   ]
 });
 

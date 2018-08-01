@@ -18,6 +18,14 @@ const expiresIn = '1h';
 //署名作成関数
 const createToken = payload => jwt.sign(payload, SECRET_WORD, {expiresIn})
 
+//署名検証関数（非同期）
+const verifyToken = token =>
+  new Promise((resolve, reject) =>
+    jwt.verify(token, SECRET_WORD, (err, decode) =>
+      decode !== undefined ? resolve(decode) : reject(err)
+    )
+  );
+
 //データファイル読み込み
 const generateDb = (jsonFilePath) => JSON.parse(fs.readFileSync(jsonFilePath, 'UTF-8'));
 
@@ -28,6 +36,16 @@ generateDb('./db/users.json').users.findIndex(user => user.email === email && us
 //ログインRouter
 server.use(bodyParser.urlencoded({extended: true}));
 server.use(bodyParser.json());
+
+server.use((request, response, next) => {
+  response.header('Access-Control-Allow-Origin', '*');
+  response.header('Access-Control-Allow-Headers', 'authorization');
+  response.header('Access-Control-Request-Headers', 'authorization');
+  response.header('Access-Control-Allow-Methods', 'GET');
+  response.header('Access-Control-Request-Methods', 'GET');
+  next();
+});
+
 server.post('/api/sign_in', (request, response) => {
   const {email, password} = request.body;
 
