@@ -1,57 +1,74 @@
-module.exports = () => {
-  return {
-    users: [
-      {
-        id: 1,
-        name: "太郎",
-        email: "tarou@example.com",
-        image: "https://randomuser.me/api/portraits/men/5.jpg",
-        team: {
-          name: "チームA"
-        }
-      },
-      {
-        id: 2,
-        name: "次郎",
-        email: "zirou@example.com",
-        image: "https://randomuser.me/api/portraits/men/15.jpg",
-        team: {
-          name: "チームB"
-        }
-      },
-      {
-        id: 3,
-        name: "三郎",
-        email: "saburou@example.com",
-        image: "https://randomuser.me/api/portraits/men/20.jpg",
-        team: {
-          name: "チームC"
-        }
-      },
-      {
-        id: 4,
-        name: "四郎",
-        email: "shirou@example.com",
-        image: "",
-        team: {
-          name: "チームD"
-        }
-      },
-      {
-        id: 5,
-        name: "五郎",
-        email: "gorou@example.com",
-        image: "https://randomuser.me/api/portraits/men/23.jpg",
-        team: {
-          name: "チームE"
-        }
-      },
-      {
-        id: 6,
-        name: "六郎",
-        email: "rokurou@example.com",
-        image: "https://randomuser.me/api/portraits/men/1.jpg"
-      }
-    ]
-  };
-};
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const jsonServer = require('json-server');
+const jwt = require('jsonwebtoken');
+
+const server = jsonServer.create();
+const routes = Object.assign({},
+  JSON.parse(fs.readFileSync('./db/users.json', 'UTF-8')),
+  JSON.parse(fs.readFileSync('./db/teams.json', 'UTF-8')),
+);
+const router = jsonServer.router(routes);
+const middlewares = jsonServer.defaults();
+
+//署名作成ワードと有効期限(1時間)
+const SECRET_WORD = 'SECRET1234567890';
+const expiresIn = '1h';
+
+//署名作成関数
+const createToken = payload => jwt.sign(payload, SECRET_WORD, {expiresIn})
+
+//署名検証関数（非同期）
+const verifyToken = token =>
+  new Promise((resolve, reject) =>
+    jwt.verify(token, SECRET_WORD, (err, decode) =>
+      decode !== undefined ? resolve(decode) : reject(err)
+    )
+  );
+
+//データファイル読み込み
+const generateDb = (jsonFilePath) => JSON.parse(fs.readFileSync(jsonFilePath, 'UTF-8'));
+
+//ログイン関数 true:SUCCESS false:ERROR
+const isAuth = ({email, password}) =>
+generateDb('./db/users.json').users.findIndex(user => user.email === email && user.password === password) !== -1
+
+//ログインRouter
+server.use(bodyParser.urlencoded({extended: true}));
+server.use(bodyParser.json());
+
+server.use((request, response, next) => {
+  response.header('Access-Control-Allow-Origin', '*');
+  response.header('Access-Control-Allow-Headers', 'authorization');
+  response.header('Access-Control-Request-Headers', 'authorization');
+  response.header('Access-Control-Allow-Methods', 'GET');
+  response.header('Access-Control-Request-Methods', 'GET');
+  next();
+});
+
+server.post('/api/sign_in', (request, response) => {
+  const {email, password} = request.body;
+
+  if (!isAuth({email, password})) {
+    const status = 401;
+    const message = 'Incorrect email or password';
+    response.status(status).json({status, message});
+    return
+  }
+
+  //ログイン成功時に認証トークンを発行
+  const access_token = createToken({email, password});
+  response.status(200).json({access_token})
+});
+
+server.use(middlewares);
+server.use(jsonServer.rewriter({
+  "/api/sign_up": "/users",
+  '/api/*': '/$1'
+}));
+server.use(router);
+server.listen(3000, () => {
+  Object.keys(routes).forEach((key) => console.log(`  http://localhost:3000/${key}`));
+  console.log('JSON Server is running')
+});
+

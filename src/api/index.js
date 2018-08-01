@@ -8,6 +8,11 @@ export default {
       return axios.post("sign_up", params);
     }
   },
+  signIn: {
+    createData(params) {
+      return axios.post("sign_in", params);
+    }
+  },
   users: {
     getData() {
       return axios.get("users");
