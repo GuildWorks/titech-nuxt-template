@@ -2,13 +2,24 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Users from "./views/Users.vue";
-import CreateUser from "./views/CreateUser.vue";
+import SignUp from "./views/SignUp.vue";
+import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
 import Layout from "@/components/Layout.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const Auth = {
+  loggedIn: false,
+  login: () => {
+    this.loggedIn = true;
+  },
+  logout: () => {
+    this.loggedIn = false;
+  }
+};
+
+const router = new Router({
   routes: [
     {
       path: "/",
@@ -19,7 +30,8 @@ export default new Router({
         {
           path: "/home",
           name: "home",
-          component: Home
+          component: Home,
+          meta: { requiresAuth: true }
         },
         {
           path: "/users",
@@ -29,7 +41,7 @@ export default new Router({
         {
           path: "/users/new",
           name: "newUser",
-          component: CreateUser
+          component: SignUp
         },
         {
           path: "/users/:userId",
@@ -37,6 +49,26 @@ export default new Router({
           component: User
         }
       ]
+    },
+    {
+      path: "/sign_up",
+      name: "signUp",
+      component: SignUp
+    },
+    {
+      path: "/sign_up/complete",
+      name: "signUpComplete",
+      component: SignUpComplete
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth) && !Auth.loggedIn) {
+    next({ path: "/sign_up", query: { redirect: to.fullPath } });
+  } else {
+    next();
+  }
+});
+
+export default router;
