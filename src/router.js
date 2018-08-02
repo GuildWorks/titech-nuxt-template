@@ -65,7 +65,7 @@ const router = new Router({
       path: "/sign_in",
       name: "signIn",
       component: SignIn
-    },
+    }
   ]
 });
 
