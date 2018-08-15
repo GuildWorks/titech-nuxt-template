@@ -11,12 +11,13 @@ const routes = Object.assign({},
 const router = jsonServer.router(routes);
 const middlewares = jsonServer.defaults();
 
-//署名作成ワードと有効期限(1時間)
+//署名作成ワード
 const SECRET_WORD = 'SECRET1234567890';
-const expiresIn = '1h';
+//トークン有効期限(1時間)
+const EXPIRES_IN = 60 * 60;
 
 //署名作成関数
-const createToken = payload => jwt.sign(payload, SECRET_WORD, {expiresIn})
+const createToken = payload => jwt.sign(payload, SECRET_WORD, {expiresIn: EXPIRES_IN})
 
 //署名検証関数（非同期）
 const verifyToken = token =>
@@ -58,7 +59,10 @@ server.post('/api/sign_in', (request, response) => {
 
   //ログイン成功時に認証トークンを発行
   const access_token = createToken({email, password});
-  response.status(200).json({access_token})
+  response.status(200).json({
+    access_token: access_token,
+    expires_in: EXPIRES_IN
+  })
 });
 
 server.use(middlewares);
