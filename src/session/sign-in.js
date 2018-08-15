@@ -1,5 +1,5 @@
-import api from "@/api"
-import { setSession } from './common'
+import api from "@/api";
+import { setSession } from "./common";
 
 export const _signIn = (email, password) => {
   const params = {
@@ -9,5 +9,5 @@ export const _signIn = (email, password) => {
   return api.signIn
     .createData(params)
     .then(response => setSession(response))
-    .catch(error => reject(error));
+    .catch(error => console.log(error));
 };

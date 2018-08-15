@@ -1,19 +1,19 @@
-import LocalStorage from './local-storage.js';
-import MemoryStorage from './memory-storage.js';
+import LocalStorage from "./local-storage.js";
+import MemoryStorage from "./memory-storage.js";
 
 export default function StorageFactory(options) {
   switch (options.storageType) {
-    case 'localStorage':
+    case "localStorage":
       try {
-        window.localStorage.setItem('testKey', 'test');
-        window.localStorage.removeItem('testKey');
-        return new LocalStorage(options.storageNamespace)
-      } catch(e) {
-        console.log('localStorageが未対応のブラウザです')
+        window.localStorage.setItem("testKey", "test");
+        window.localStorage.removeItem("testKey");
+        return new LocalStorage(options.storageNamespace);
+      } catch (e) {
+        console.log("localStorageが未対応のブラウザです");
       }
-    case 'memoryStorage':
+      break;
+    case "memoryStorage":
     default:
       return new MemoryStorage(options.storageNamespace);
-      break;
   }
 }

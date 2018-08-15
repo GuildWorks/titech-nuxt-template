@@ -1,4 +1,4 @@
 export default {
-  storageType: 'localStorage',
+  storageType: "localStorage",
   storageNamespace: process.env.VUE_APP_NAME
 };

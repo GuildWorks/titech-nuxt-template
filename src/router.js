@@ -7,25 +7,24 @@ import SignUp from "./views/SignUp.vue";
 import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
 import Layout from "@/components/Layout.vue";
-import store from '@/store';
+import store from "@/store";
 import defaultOptions from "@/storage/options.js";
 import StorageFactory from "@/storage/storage.js";
-import { ACCESS_TOKEN } from "@/store/modules/session/getter-types";
 import { SET_ACCESS_TOKEN } from "@/store/modules/session/mutation-types";
 
 Vue.use(Router);
 
-const accessToken = () => {
-  if(!!store.getters[`session/${ACCESS_TOKEN}`]) {
-    return store.getters[`session/${ACCESS_TOKEN}`]
-  }
+const hasValidAccessToken = () => {
   let options = Object.assign({}, defaultOptions);
   options.storageNamespace = process.env.VUE_APP_NAME + "-authenticate";
   const localStorage = StorageFactory(options);
-  if(localStorage.getItem('token')) {
-    const token = JSON.parse(localStorage.getItem('token')).access_token;
+  if (localStorage.getItem("token")) {
+    // ToDo トークンが有効かどうかチェックする
+    const token = JSON.parse(localStorage.getItem("token")).access_token;
     store.commit(`session/${SET_ACCESS_TOKEN}`, token);
-    return token
+    return token;
+  } else {
+    return false;
   }
 };
 
@@ -74,32 +73,53 @@ const router = new Router({
       name: "signIn",
       component: SignIn,
       meta: { requiresAuth: false }
-    },
+    }
   ]
 });
 
 router.beforeEach((to, from, next) => {
-  if (accessToken()) {
-    if (!from.matched.some(record => record.meta.requiresAuth) && to.matched.some(record => record.meta.requiresAuth)) {
-      next()
+  if (hasValidAccessToken()) {
+    if (
+      !from.matched.some(record => record.meta.requiresAuth) &&
+      to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next();
     }
-    if (from.matched.some(record => record.meta.requiresAuth) && to.matched.some(record => record.meta.requiresAuth)) {
-      next()
+    if (
+      from.matched.some(record => record.meta.requiresAuth) &&
+      to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next();
     }
-    if (from.matched.some(record => record.meta.requiresAuth) && !to.matched.some(record => record.meta.requiresAuth)) {
-      next(false)
+    if (
+      from.matched.some(record => record.meta.requiresAuth) &&
+      !to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next(false);
     }
-    if (!from.matched.some(record => record.meta.requiresAuth) && !to.matched.some(record => record.meta.requiresAuth)) {
-      next('/')
+    if (
+      !from.matched.some(record => record.meta.requiresAuth) &&
+      !to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next("/");
     }
   } else {
-    if (!from.matched.some(record => record.meta.requiresAuth) && !to.matched.some(record => record.meta.requiresAuth)) {
-      next()
+    if (
+      !from.matched.some(record => record.meta.requiresAuth) &&
+      !to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next();
     }
-    if (from.matched.some(record => record.meta.requiresAuth) && !to.matched.some(record => record.meta.requiresAuth)) {
-      next()
+    if (
+      from.matched.some(record => record.meta.requiresAuth) &&
+      !to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next();
     }
-    if (!from.matched.some(record => record.meta.requiresAuth) && to.matched.some(record => record.meta.requiresAuth)) {
+    if (
+      !from.matched.some(record => record.meta.requiresAuth) &&
+      to.matched.some(record => record.meta.requiresAuth)
+    ) {
       next("/sign_in");
     }
   }
