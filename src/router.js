@@ -7,16 +7,24 @@ import SignUp from "./views/SignUp.vue";
 import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
 import Layout from "@/components/Layout.vue";
+import store from "@/store";
+import defaultOptions from "@/storage/options.js";
+import StorageFactory from "@/storage/storage.js";
+import { SET_ACCESS_TOKEN } from "@/store/modules/session/mutation-types";
 
 Vue.use(Router);
 
-const Auth = {
-  loggedIn: false,
-  login: () => {
-    this.loggedIn = true;
-  },
-  logout: () => {
-    this.loggedIn = false;
+const hasValidAccessToken = () => {
+  let options = Object.assign({}, defaultOptions);
+  options.storageNamespace = process.env.VUE_APP_NAME + "-authenticate";
+  const localStorage = StorageFactory(options);
+  if (localStorage.getItem("token")) {
+    // ToDo トークンが有効かどうかチェックする
+    const token = JSON.parse(localStorage.getItem("token")).access_token;
+    store.commit(`session/${SET_ACCESS_TOKEN}`, token);
+    return token;
+  } else {
+    return false;
   }
 };
 
@@ -37,43 +45,83 @@ const router = new Router({
         {
           path: "/users",
           name: "users",
-          component: Users
-        },
-        {
-          path: "/users/new",
-          name: "newUser",
-          component: SignUp
+          component: Users,
+          meta: { requiresAuth: true }
         },
         {
           path: "/users/:userId",
           name: "user",
-          component: User
+          component: User,
+          meta: { requiresAuth: true }
         }
       ]
     },
     {
       path: "/sign_up",
       name: "signUp",
-      component: SignUp
+      component: SignUp,
+      meta: { requiresAuth: false }
     },
     {
       path: "/sign_up/complete",
       name: "signUpComplete",
-      component: SignUpComplete
+      component: SignUpComplete,
+      meta: { requiresAuth: false }
     },
     {
       path: "/sign_in",
       name: "signIn",
-      component: SignIn
+      component: SignIn,
+      meta: { requiresAuth: false }
     }
   ]
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth) && !Auth.loggedIn) {
-    next({ path: "/sign_up", query: { redirect: to.fullPath } });
+  if (hasValidAccessToken()) {
+    if (
+      !from.matched.some(record => record.meta.requiresAuth) &&
+      to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next();
+    }
+    if (
+      from.matched.some(record => record.meta.requiresAuth) &&
+      to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next();
+    }
+    if (
+      from.matched.some(record => record.meta.requiresAuth) &&
+      !to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next(false);
+    }
+    if (
+      !from.matched.some(record => record.meta.requiresAuth) &&
+      !to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next("/");
+    }
   } else {
-    next();
+    if (
+      !from.matched.some(record => record.meta.requiresAuth) &&
+      !to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next();
+    }
+    if (
+      from.matched.some(record => record.meta.requiresAuth) &&
+      !to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next();
+    }
+    if (
+      !from.matched.some(record => record.meta.requiresAuth) &&
+      to.matched.some(record => record.meta.requiresAuth)
+    ) {
+      next("/sign_in");
+    }
   }
 });
 

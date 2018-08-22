@@ -26,15 +26,8 @@
 </template>
 
 <script>
-import api from "@/api";
-
-const signInRoutine = params =>
-  new Promise((resolve, reject) => {
-    api.signIn
-      .createData(params)
-      .then(response => resolve(response))
-      .catch(error => reject(error));
-  });
+import { SIGN_IN } from "@/store/modules/session/action-types";
+import { mapActions } from "vuex";
 
 export default {
   name: "SignInForm",
@@ -47,13 +40,16 @@ export default {
         v => !!v || "E-mail is required",
         v => /.+@.+/.test(v) || "E-mail must be valid"
       ],
-      passwordRules: v => !!v || "Password is required"
+      passwordRules: [v => !!v || "Password is required"]
     };
   },
   methods: {
+    ...mapActions("session", {
+      signIn: SIGN_IN
+    }),
     submit() {
       if (this.$refs.form.validate()) {
-        signInRoutine({
+        this.signIn({
           email: this.email,
           password: this.password
         }).then(() => {
