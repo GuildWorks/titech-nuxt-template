@@ -16,6 +16,9 @@ export default {
   users: {
     getData() {
       return axios.get("users");
+    },
+    getDataBy(userId) {
+      return axios.get(`users/${userId}`);
     }
   }
 };

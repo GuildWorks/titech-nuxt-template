@@ -12,5 +12,15 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+  [types.FETCH_USER]({ commit }, userId) {
+    api.users
+      .getDataBy(userId)
+      .then(response => {
+        commit(mutationTypes.RECEIVE_USER, response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };

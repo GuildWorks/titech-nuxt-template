@@ -3,7 +3,7 @@
     <v-content>
       <v-container fill-height>
         <v-layout justify-center align-center>
-          <user-profile></user-profile>
+          <user-profile :userId="Number(userId)"></user-profile>
         </v-layout>
       </v-container>
     </v-content>
@@ -16,6 +16,7 @@ import UserProfile from "@/components/UserProfile.vue";
 
 export default {
   name: "Users",
+  props: ["userId"],
   components: {
     UserProfile
   }

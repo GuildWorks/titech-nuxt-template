@@ -1,28 +1,40 @@
 <template>
-  <div>
-    <p>{{ user.id }}</p>
-    <img :src="user.image">
-    <p>{{ user.name }}</p>
-    <p>{{ user.email }}</p>
-    <p>{{ user.team.name }}</p>
+  <div v-if="currentUser">
+    <p>{{ currentUser.id }}</p>
+    <img :src="currentUser.image">
+    <p>{{ currentUser.name }}</p>
+    <p>{{ currentUser.email }}</p>
+    <p>{{ currentUser.team.name }}</p>
   </div>
 </template>
 
 <script>
+import { USER } from "@/store/modules/users/getter-types";
+import { FETCH_USER } from "@/store/modules/users/action-types";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "UserProfile",
-  data() {
-    return {
-      user: {
-        id: 1,
-        name: `太郎`,
-        email: `tarou@example.com`,
-        image: require(`../assets/logo.png`),
-        team: {
-          name: `チームA`
-        }
-      }
-    };
+  props: {
+    userId: {
+      required: true,
+      type: Number
+    }
+  },
+  computed: {
+    ...mapGetters("users", {
+      user: USER
+    }),
+    currentUser() {
+      return this.user(this.userId);
+    }
+  },
+  created() {
+    this.fetchUser(this.userId);
+  },
+  methods: {
+    ...mapActions("users", {
+      fetchUser: FETCH_USER
+    })
   }
 };
 </script>
