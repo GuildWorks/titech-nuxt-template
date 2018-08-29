@@ -4,7 +4,7 @@
     <img :src="currentUser.image">
     <p>{{ currentUser.name }}</p>
     <p>{{ currentUser.email }}</p>
-    <p>{{ currentUser.team.name }}</p>
+    <p v-if="currentUser.team">{{ currentUser.team.name }}</p>
   </div>
 </template>
 
