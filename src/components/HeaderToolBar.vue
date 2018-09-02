@@ -9,12 +9,6 @@
       <v-list dense>
         <v-subheader class="mt-3 grey--text text--darken-1">LIST</v-subheader>
         <v-list-tile-content>
-          <v-list-tile to="/users/new">
-            <v-list-tile-action>
-              <v-icon>person_add</v-icon>
-            </v-list-tile-action>
-            ユーザー作成（仮）
-          </v-list-tile>
           <v-list-tile to="/users">
             <v-list-tile-action>
               <v-icon>person</v-icon>

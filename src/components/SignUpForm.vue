@@ -16,6 +16,7 @@
               </v-form>
             </v-card-text>
             <v-card-actions>
+              <v-btn flat small color="primary" to="sign_in">ログイン</v-btn>
               <v-spacer></v-spacer>
               <v-btn color="primary" :disabled="!valid" @click="submit">登録</v-btn>
             </v-card-actions>
