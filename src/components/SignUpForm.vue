@@ -28,15 +28,19 @@
 </template>
 
 <script>
-import api from "@/api";
+import firebase from "firebase";
 
-const signUpRoutine = params =>
-  new Promise((resolve, reject) => {
-    api.signUp
-      .createData(params)
-      .then(response => resolve(response))
-      .catch(error => reject(error));
-  });
+const signUpRoutine = params => {
+  return firebase
+    .auth()
+    .createUserWithEmailAndPassword(params.email, params.password)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+};
 
 export default {
   name: "SignUpForm",
