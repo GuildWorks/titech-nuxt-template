@@ -15,6 +15,7 @@
               </v-form>
             </v-card-text>
             <v-card-actions>
+              <v-btn flat small color="primary" to="sign_up">新規登録</v-btn>
               <v-spacer></v-spacer>
               <v-btn color="primary" :disabled="!valid" @click="submit">ログイン</v-btn>
             </v-card-actions>
