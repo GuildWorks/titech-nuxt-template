@@ -15,7 +15,7 @@
             </v-list-tile-action>
             ユーザー一覧
           </v-list-tile>
-          <v-list-tile to="/">
+          <v-list-tile to="/teams">
             <v-list-tile-action>
               <v-icon>people</v-icon>
             </v-list-tile-action>

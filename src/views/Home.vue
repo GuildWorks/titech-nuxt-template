@@ -1,9 +1,11 @@
 <template>
   <v-content>
     <v-container fill-height>
-      <v-layout justify-center align-center>
-        <p>Home</p>
-      </v-layout>
+      <p>README</p>
+      <p>リンク集</p>
+      <ul>
+        <li><a>github</a></li>
+      </ul>
     </v-container>
   </v-content>
 </template>
