@@ -52,8 +52,6 @@ export default {
         this.signIn({
           email: this.email,
           password: this.password
-        }).then(() => {
-          this.$router.push("/");
         });
       }
     }

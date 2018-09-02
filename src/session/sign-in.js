@@ -1,13 +1,26 @@
-import api from "@/api";
-import { setSession } from "./common";
+import * as firebase from "firebase";
 
 export const _signIn = (email, password) => {
   const params = {
     email: email,
     password: password
   };
-  return api.signIn
-    .createData(params)
-    .then(response => setSession(response))
-    .catch(error => console.log(error));
+
+  return firebase
+    .auth()
+    .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(function() {
+      return firebase
+        .auth()
+        .signInWithEmailAndPassword(params.email, params.password)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    })
+    .catch(function(error) {
+      alert(error.message);
+    });
 };

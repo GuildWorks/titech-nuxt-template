@@ -7,25 +7,12 @@ import SignUp from "./views/SignUp.vue";
 import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
 import Layout from "@/components/Layout.vue";
-import store from "@/store";
-import defaultOptions from "@/storage/options.js";
-import StorageFactory from "@/storage/storage.js";
-import { SET_ACCESS_TOKEN } from "@/store/modules/session/mutation-types";
+import * as firebase from "firebase";
 
 Vue.use(Router);
 
 const hasValidAccessToken = () => {
-  let options = Object.assign({}, defaultOptions);
-  options.storageNamespace = process.env.VUE_APP_NAME + "-authenticate";
-  const localStorage = StorageFactory(options);
-  if (localStorage.getItem("token")) {
-    // ToDo トークンが有効かどうかチェックする
-    const token = JSON.parse(localStorage.getItem("token")).access_token;
-    store.commit(`session/${SET_ACCESS_TOKEN}`, token);
-    return token;
-  } else {
-    return false;
-  }
+  return firebase.auth().currentUser != null;
 };
 
 const router = new Router({
