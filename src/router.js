@@ -6,6 +6,7 @@ import SignIn from "./views/SignIn.vue";
 import SignUp from "./views/SignUp.vue";
 import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
+import Teams from "./views/teams/index.vue";
 import Layout from "@/components/Layout.vue";
 import * as firebase from "firebase";
 
@@ -41,6 +42,12 @@ const router = new Router({
           component: User,
           meta: { requiresAuth: true },
           props: true
+        },
+        {
+          path: "/teams",
+          name: "teams",
+          component: Teams,
+          meta: { requiresAuth: true }
         }
       ]
     },
