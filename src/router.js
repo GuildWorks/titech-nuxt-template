@@ -7,6 +7,7 @@ import SignUp from "./views/SignUp.vue";
 import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
 import Teams from "./views/teams/index.vue";
+import Team from "./views/teams/show.vue";
 import Layout from "@/components/Layout.vue";
 import store from "@/store";
 import defaultOptions from "@/storage/options.js";
@@ -61,6 +62,13 @@ const router = new Router({
           name: "teams",
           component: Teams,
           meta: { requiresAuth: true }
+        },
+        {
+          path: "/teams/:teamId",
+          name: "team",
+          component: Team,
+          meta: { requiresAuth: true },
+          props: true
         }
       ]
     },

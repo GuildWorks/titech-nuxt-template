@@ -24,6 +24,9 @@ export default {
   teams: {
     getData() {
       return axios.get("teams");
+    },
+    getDataBy(teamId) {
+      return axios.get(`teams/${teamId}`);
     }
   }
 };
