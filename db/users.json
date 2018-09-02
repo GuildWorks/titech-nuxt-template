@@ -7,6 +7,7 @@
       "password": "hogehoge",
       "image": "https://randomuser.me/api/portraits/men/5.jpg",
       "team": {
+        "id": 1,
         "name": "チームA"
       }
     },
@@ -17,6 +18,7 @@
       "password": "hogehoge",
       "image": "https://randomuser.me/api/portraits/men/15.jpg",
       "team": {
+        "id": 2,
         "name": "チームB"
       }
     },
@@ -27,6 +29,7 @@
       "password": "hogehoge",
       "image": "https://randomuser.me/api/portraits/men/20.jpg",
       "team": {
+        "id": 3,
         "name": "チームC"
       }
     },
@@ -37,7 +40,8 @@
       "password": "hogehoge",
       "image": "",
       "team": {
-        "name": "チームD"
+        "id": 1,
+        "name": "チームA"
       }
     },
     {
@@ -47,7 +51,8 @@
       "password": "hogehoge",
       "image": "https://randomuser.me/api/portraits/men/23.jpg",
       "team": {
-        "name": "チームE"
+        "id": 1,
+        "name": "チームA"
       }
     },
     {
@@ -55,35 +60,11 @@
       "name": "六郎",
       "email": "rokurou@example.com",
       "password": "hogehoge",
-      "image": "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-      "email": "tarou@example.com",
-      "password": "hogehogeaaa",
-      "id": 7
-    },
-    {
-      "email": "tarou@example.com",
-      "password": "hogehogeaaa",
-      "id": 8
-    },
-    {
-      "name": "aaa",
-      "email": "a@x.com",
-      "password": "1111111",
-      "id": 9
-    },
-    {
-      "name": "aaa",
-      "email": "b@b.com",
-      "password": "bbbbbbbb",
-      "id": 10
-    },
-    {
-      "name": "bb",
-      "email": "b@b.com",
-      "password": "bbbbbbbb",
-      "id": 11
+      "image": "https://randomuser.me/api/portraits/men/1.jpg",
+      "team": {
+        "id": 1,
+        "name": "チームA"
+      }
     }
   ]
 }

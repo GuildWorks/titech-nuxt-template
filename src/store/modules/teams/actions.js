@@ -12,5 +12,15 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+  [types.FETCH_TEAM]({ commit }, teamId) {
+    api.teams
+      .getDataBy(teamId)
+      .then(response => {
+        commit(mutationTypes.RECEIVE_TEAM, response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
