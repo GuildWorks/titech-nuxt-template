@@ -1,12 +1,52 @@
 <template>
-  <div v-if="currentUser">
-    <p>{{ currentUser.id }}</p>
-    <img :src="currentUser.image">
-    <p>{{ currentUser.name }}</p>
-    <p>{{ currentUser.email }}</p>
-    <p>{{ currentUser.team.name }}</p>
-  </div>
+  <v-layout row v-if="currentUser">
+    <v-flex xs12 sm6 offset-sm3>
+      <v-card>
+        <v-img
+            :src="currentUser.image"
+            height="300px"
+        >
+          <v-layout
+              column
+              fill-height
+          >
+            <v-spacer></v-spacer>
+
+            <v-card-title class="white--text pl-5 pt-5">
+              <div class="display-1 pl-5 pt-5">{{ currentUser.name }}</div>
+            </v-card-title>
+          </v-layout>
+        </v-img>
+
+        <v-list two-line>
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-icon color="indigo">mail</v-icon>
+            </v-list-tile-action>
+
+            <v-list-tile-content>
+              <v-list-tile-title>{{ currentUser.email }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-divider inset></v-divider>
+
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-icon color="indigo">people</v-icon>
+            </v-list-tile-action>
+
+            <v-list-tile-content>
+              <v-list-tile-title>{{ currentUser.team.name }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-card>
+    </v-flex>
+  </v-layout>
+
 </template>
+
 
 <script>
 import { USER } from "@/store/modules/users/getter-types";
