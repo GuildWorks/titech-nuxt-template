@@ -21,9 +21,9 @@ const config = {
 firebase.initializeApp(config);
 
 firebase.auth().onAuthStateChanged(user => {
-  if(user != null) {
+  if (user != null) {
     router.push("/");
-  }else {
+  } else {
     router.push("/sign_in");
   }
 });

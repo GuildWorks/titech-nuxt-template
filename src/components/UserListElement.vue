@@ -4,11 +4,11 @@
     width="200px"
     :to="`/users/${user.id}`"
   >
-    <v-card-media
+    <v-img
       :src="userImage"
       height="256px"
     >
-    </v-card-media>
+    </v-img>
 
     <v-card-actions>
       <v-icon>person</v-icon>
