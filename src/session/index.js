@@ -12,3 +12,13 @@ export const _signIn = (email, password) => {
 export const _signOut = () => {
   return Firebase.signOut();
 };
+
+export const _signUp = (name, email, password) => {
+  const params = {
+    name: name,
+    email: email,
+    password: password
+  };
+
+  return Firebase.signUp(params);
+};

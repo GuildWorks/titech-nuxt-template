@@ -28,19 +28,8 @@
 </template>
 
 <script>
-import firebase from "firebase";
-
-const signUpRoutine = params => {
-  return firebase
-    .auth()
-    .createUserWithEmailAndPassword(params.email, params.password)
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      alert(error.message);
-    });
-};
+import { SIGN_UP } from "@/store/modules/session/action-types";
+import { mapActions } from "vuex";
 
 export default {
   name: "SignUpForm",
@@ -62,9 +51,12 @@ export default {
     };
   },
   methods: {
+    ...mapActions("session", {
+      signUp: SIGN_UP
+    }),
     submit() {
       if (this.$refs.form.validate()) {
-        signUpRoutine({
+        this.signUp({
           name: this.name,
           email: this.email,
           password: this.password

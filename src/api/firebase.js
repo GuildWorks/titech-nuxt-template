@@ -18,10 +18,7 @@ firebase.initializeApp({
   messagingSenderId: "1027200745609"
 });
 let auth = firebase.auth();
-let database = firebase.firestore();
-
-let _userInfo = {};
-let _userRef = null;
+let db = firebase.firestore();
 
 export default {
   initFirebase() {
@@ -52,11 +49,30 @@ export default {
     auth.signOut();
   },
 
+  signUp(params) {
+    return new Promise((resolve, reject) => {
+      auth
+        .createUserWithEmailAndPassword(params.email, params.password)
+        .then(response => {
+          this.setUserInfo({
+            loggedIn: false,
+            uid: response.user.uid,
+            name: params.name,
+            email: params.email,
+            image: ""
+          });
+        })
+        .catch(error => {
+          reject(alert(error.message));
+        });
+    });
+  },
+
   onAuthStateChanged(user) {
     if (user) {
       this.fetchUserInfo(user.uid)
         .then(val => {
-          _userInfo = {
+          const _userInfo = {
             loggedIn: true,
             uid: user.uid,
             name: val.name,
@@ -82,14 +98,38 @@ export default {
 
   fetchUserInfo(uid) {
     return new Promise((resolve, reject) => {
-      _userRef = database.collection("users").doc(uid);
-      _userRef
+      db.collection("users")
+        .doc(uid)
         .get()
         .then(snapshot => {
           const user = snapshot.data();
-          resolve(user);
+          const result = user || {};
+          resolve(result);
         })
         .catch(reject);
+    });
+  },
+
+  setUserInfo(userInfo) {
+    return new Promise((resolve, reject) => {
+      if (
+        !!userInfo.uid &&
+        !!userInfo.name &&
+        !!userInfo.email &&
+        !!auth.currentUser
+      ) {
+        db.collection("users")
+          .doc(userInfo.uid)
+          .set({
+            name: userInfo.name,
+            email: userInfo.email,
+            image: userInfo.image
+          })
+          .then(response => {
+            resolve(response);
+          })
+          .catch(reject);
+      }
     });
   }
 };
