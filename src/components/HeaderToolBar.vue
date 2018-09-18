@@ -21,7 +21,7 @@
             </v-list-tile-action>
             チーム一覧
           </v-list-tile>
-          <v-list-tile v-on:click="logout()">
+          <v-list-tile v-on:click="signOut()">
             <v-list-tile-action>
               <v-icon>people</v-icon>
             </v-list-tile-action>
@@ -57,7 +57,8 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import { SIGN_OUT } from "@/store/modules/session/action-types";
+import { mapActions } from "vuex";
 
 export default {
   name: "HeaderToolBar",
@@ -68,9 +69,9 @@ export default {
     source: String
   },
   methods: {
-    logout() {
-      firebase.auth().signOut();
-    }
+    ...mapActions("session", {
+      signOut: SIGN_OUT
+    })
   }
 };
 </script>

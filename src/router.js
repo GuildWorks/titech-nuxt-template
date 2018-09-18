@@ -8,12 +8,17 @@ import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
 import Teams from "./views/teams/index.vue";
 import Layout from "@/components/Layout.vue";
-import * as firebase from "firebase";
+import defaultOptions from "@/storage/options.js";
+import StorageFactory from "@/storage/storage.js";
 
 Vue.use(Router);
 
-const hasValidAccessToken = () => {
-  return firebase.auth().currentUser != null;
+const localStorage = StorageFactory(
+  Object.assign(defaultOptions, { storageType: "localStorage" })
+);
+
+const isLogged = () => {
+  return !!localStorage.getItem(["session", "userInfo"].join("."));
 };
 
 const router = new Router({
@@ -73,7 +78,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (hasValidAccessToken()) {
+  if (isLogged()) {
     if (
       !from.matched.some(record => record.meta.requiresAuth) &&
       to.matched.some(record => record.meta.requiresAuth)
