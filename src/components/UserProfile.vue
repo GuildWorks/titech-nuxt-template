@@ -37,7 +37,7 @@
             </v-list-tile-action>
 
             <v-list-tile-content>
-              <v-list-tile-title>{{ currentUser.team.name }}</v-list-tile-title>
+              <v-list-tile-title v-if="currentUser.team">{{ currentUser.team.name }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -56,7 +56,7 @@ export default {
   props: {
     userId: {
       required: true,
-      type: Number
+      type: String
     }
   },
   computed: {

@@ -5,6 +5,6 @@ export default {
     return state.all;
   },
   [types.USER](state) {
-    return id => state.all.find(user => user.id === Number(id));
+    return id => state.all.find(user => user.id === id);
   }
 };

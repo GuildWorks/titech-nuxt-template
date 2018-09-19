@@ -3,7 +3,7 @@
     <v-content>
       <v-container fill-height>
         <v-layout justify-center align-center>
-          <user-profile :userId="Number(userId)"></user-profile>
+          <user-profile :userId="userId"></user-profile>
         </v-layout>
       </v-container>
     </v-content>

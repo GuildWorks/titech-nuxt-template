@@ -123,13 +123,58 @@ export default {
           .set({
             name: userInfo.name,
             email: userInfo.email,
-            image: userInfo.image
+            image: userInfo.image,
+            team: null
           })
           .then(response => {
             resolve(response);
           })
           .catch(reject);
       }
+    });
+  },
+
+  fetchUsers() {
+    return new Promise((resolve, reject) => {
+      if (auth.currentUser) {
+        db.collection("users")
+          .get()
+          .then(snapshot => {
+            const userRefs = snapshot.docs.map(async userRef => {
+              const user = userRef.data();
+              user.id = userRef.id;
+              user.team = null;
+              if (user.team) {
+                const teamRef = await user.team.get();
+                user.team = teamRef.data();
+              }
+              return user;
+            });
+            Promise.all(userRefs).then(users => {
+              resolve(users);
+            });
+          })
+          .catch(reject);
+      }
+    });
+  },
+
+  fetchUser(uid) {
+    return new Promise((resolve, reject) => {
+      db.collection("users")
+        .doc(uid)
+        .get()
+        .then(async snapshot => {
+          const user = snapshot.data();
+          user.id = snapshot.id;
+          user.team = null;
+          if (user.team) {
+            const teamRef = await user.team.get();
+            user.team = teamRef.data();
+          }
+          resolve(user);
+        })
+        .catch(reject);
     });
   }
 };
