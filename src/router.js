@@ -9,13 +9,12 @@ import User from "./views/User";
 import Teams from "./views/Teams";
 import Team from "./views/Team";
 import Layout from "./views/Layout";
-import store from "@/store";
-import { LOGGED_IN } from "@/store/modules/session/getter-types";
+import Firebase from "./api/firebase";
 
 Vue.use(Router);
 
 const isLogged = () => {
-  return store.getters[`session/${LOGGED_IN}`];
+  return Firebase.getAuth();
 };
 
 const router = new Router({

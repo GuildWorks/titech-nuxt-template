@@ -14,11 +14,44 @@ firebase.initializeApp({
 });
 let auth = firebase.auth();
 let db = firebase.firestore();
+let app = null;
 
 export default {
-  initFirebase() {
+  initFirebase(callback) {
     store.dispatch(`shared/${SET_LOADING}`, true);
-    auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.fetchUserInfo(user.uid)
+          .then(val => {
+            const _userInfo = {
+              loggedIn: true,
+              uid: user.uid,
+              name: val.name,
+              image: val.image
+            };
+            store.dispatch(
+              `session/${ON_AUTH_STATE_CHANGED}`,
+              Object.assign({}, _userInfo)
+            );
+            store.dispatch(`shared/${SET_LOADING}`, false);
+          })
+          .catch(e => {
+            store.dispatch(`shared/${SET_LOADING}`, false);
+            console.log(e);
+          });
+      } else {
+        store.dispatch(`shared/${SET_LOADING}`, false);
+        router.push("/sign_in");
+      }
+
+      if (!app) {
+        app = callback();
+      }
+    });
+  },
+
+  getAuth() {
+    return auth.currentUser;
   },
 
   signIn(params) {
@@ -31,6 +64,7 @@ export default {
           .signInWithEmailAndPassword(params.email, params.password)
           .then(response => {
             console.log(response);
+            router.push("/");
           })
           .catch(error => {
             alert(error.message);
@@ -59,38 +93,12 @@ export default {
             email: params.email,
             image: ""
           });
+          router.push("/sign_up/complete");
         })
         .catch(error => {
           reject(alert(error.message));
         });
     });
-  },
-
-  onAuthStateChanged(user) {
-    if (user) {
-      this.fetchUserInfo(user.uid)
-        .then(val => {
-          const _userInfo = {
-            loggedIn: true,
-            uid: user.uid,
-            name: val.name,
-            image: val.image
-          };
-          store.dispatch(
-            `session/${ON_AUTH_STATE_CHANGED}`,
-            Object.assign({}, _userInfo)
-          );
-          store.dispatch(`shared/${SET_LOADING}`, false);
-          router.push("/");
-        })
-        .catch(e => {
-          store.dispatch(`shared/${SET_LOADING}`, false);
-          console.log(e);
-        });
-    } else {
-      store.dispatch(`shared/${SET_LOADING}`, false);
-      router.push("/sign_in");
-    }
   },
 
   fetchUserInfo(uid) {

@@ -10,10 +10,12 @@ Vue.use(Vuetify);
 
 Vue.config.productionTip = false;
 
-Firebase.initFirebase();
+const initializeVueApp = () => {
+  return new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount("#app");
+};
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+Firebase.initFirebase(initializeVueApp);

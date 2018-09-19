@@ -60,8 +60,6 @@ export default {
           name: this.name,
           email: this.email,
           password: this.password
-        }).then(() => {
-          this.$router.push("/sign_up/complete");
         });
       }
     }
