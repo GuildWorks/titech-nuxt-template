@@ -5,7 +5,7 @@
         <div v-if="team">
           <p>{{ team.id }}</p>
           <p>{{ team.name }}</p>
-          <team-member-list :users="team.users"></team-member-list>
+          <team-member-list :users="users"></team-member-list>
         </div>
       </v-container>
     </v-content>
@@ -15,6 +15,8 @@
 <script>
 // @ is an alias to /src
 import { TEAM } from "@/store/modules/teams/getter-types";
+import { USERS_BELONGS_TO_TEAMS } from "@/store/modules/users/getter-types";
+import { FETCH_USERS } from "@/store/modules/users/action-types";
 import { FETCH_TEAM } from "@/store/modules/teams/action-types";
 import { mapGetters, mapActions } from "vuex";
 import TeamMemberList from "./components/TeamMemberList.vue";
@@ -29,16 +31,26 @@ export default {
     ...mapGetters("teams", {
       getTeam: TEAM
     }),
+    ...mapGetters("users", {
+      getUsersBelongsToTeam: USERS_BELONGS_TO_TEAMS
+    }),
     team() {
-      return this.getTeam(Number(this.teamId));
+      return this.getTeam(this.teamId);
+    },
+    users() {
+      return this.getUsersBelongsToTeam(this.teamId);
     }
   },
   created() {
-    this.fetchTeam(Number(this.teamId));
+    this.fetchUsers();
+    this.fetchTeam(this.teamId);
   },
   methods: {
     ...mapActions("teams", {
       fetchTeam: FETCH_TEAM
+    }),
+    ...mapActions("users", {
+      fetchUsers: FETCH_USERS
     })
   }
 };

@@ -140,7 +140,6 @@ export default {
             const userRefs = snapshot.docs.map(async userRef => {
               const user = userRef.data();
               user.id = userRef.id;
-              user.team = null;
               if (user.team) {
                 const teamRef = await user.team.get();
                 user.team = teamRef.data();
@@ -165,7 +164,6 @@ export default {
         .then(async snapshot => {
           const user = snapshot.data();
           user.id = snapshot.id;
-          user.team = null;
           if (user.team) {
             const teamRef = await user.team.get();
             user.team = teamRef.data();
@@ -194,6 +192,20 @@ export default {
           })
           .catch(reject);
       }
+    });
+  },
+
+  fetchTeam(uid) {
+    return new Promise((resolve, reject) => {
+      db.collection("teams")
+        .doc(uid)
+        .get()
+        .then(async snapshot => {
+          const team = snapshot.data();
+          team.id = snapshot.id;
+          resolve(team);
+        })
+        .catch(reject);
     });
   }
 };

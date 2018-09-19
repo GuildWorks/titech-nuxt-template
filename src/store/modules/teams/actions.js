@@ -12,11 +12,10 @@ export default {
         console.log(error);
       });
   },
-  [types.FETCH_TEAM]({ commit }, teamId) {
-    api.teams
-      .getDataBy(teamId)
+  [types.FETCH_TEAM]({ commit }, uid) {
+    Firebase.fetchTeam(uid)
       .then(response => {
-        commit(mutationTypes.RECEIVE_TEAM, response.data);
+        commit(mutationTypes.RECEIVE_TEAM, response);
       })
       .catch(error => {
         console.log(error);
