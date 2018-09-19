@@ -144,6 +144,7 @@ export default {
               if (user.team) {
                 const teamRef = await user.team.get();
                 user.team = teamRef.data();
+                user.team.id = teamRef.id;
               }
               return user;
             });
@@ -168,10 +169,31 @@ export default {
           if (user.team) {
             const teamRef = await user.team.get();
             user.team = teamRef.data();
+            user.team.id = teamRef.id;
           }
           resolve(user);
         })
         .catch(reject);
+    });
+  },
+
+  fetchTeams() {
+    return new Promise((resolve, reject) => {
+      if (auth.currentUser) {
+        db.collection("teams")
+          .get()
+          .then(snapshot => {
+            const teamRefs = snapshot.docs.map(async teamRef => {
+              const team = teamRef.data();
+              team.id = teamRef.id;
+              return team;
+            });
+            Promise.all(teamRefs).then(teams => {
+              resolve(teams);
+            });
+          })
+          .catch(reject);
+      }
     });
   }
 };
