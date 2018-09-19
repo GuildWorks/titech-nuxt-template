@@ -1,10 +1,9 @@
 <template>
   <div>
     <v-content>
-      <v-container fill-height>
+      <v-container fluid grid-list-md>
         <div v-if="team">
-          <p>{{ team.id }}</p>
-          <p>{{ team.name }}</p>
+          <h1>{{ team.name }}</h1>
           <team-member-list :users="users"></team-member-list>
         </div>
       </v-container>
