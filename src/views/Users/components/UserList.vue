@@ -17,13 +17,11 @@
 </template>
 
 <script>
-import HeaderToolBar from "./HeaderToolBar.vue";
 import UserListElement from "./UserListElement.vue";
 
 export default {
   name: "UserList",
   components: {
-    HeaderToolBar,
     UserListElement
   },
   props: {

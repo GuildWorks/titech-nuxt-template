@@ -7,7 +7,7 @@
 
 <script>
 // @ is an alias to /src
-import HeaderToolBar from "@/components/HeaderToolBar.vue";
+import HeaderToolBar from "./components/HeaderToolBar.vue";
 
 export default {
   name: "Users",

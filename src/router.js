@@ -1,14 +1,14 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-import Users from "./views/Users.vue";
-import SignIn from "./views/SignIn.vue";
-import SignUp from "./views/SignUp.vue";
-import SignUpComplete from "./views/SignUpComplete.vue";
-import User from "./views/User.vue";
+import Home from "./views/Home";
+import Users from "./views/Users";
+import SignIn from "./views/SignIn";
+import SignUp from "./views/SignUp";
+import SignUpComplete from "./views/SignUpComplete";
+import User from "./views/User";
 import Teams from "./views/Teams";
 import Team from "./views/Team";
-import Layout from "@/components/Layout.vue";
+import Layout from "./views/Layout";
 import store from "@/store";
 import { LOGGED_IN } from "@/store/modules/session/getter-types";
 

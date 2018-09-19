@@ -12,7 +12,7 @@
 
 <script>
 // @ is an alias to /src
-import UserList from "@/components/UserList.vue";
+import UserList from "./components/UserList.vue";
 import { ALL_USERS } from "@/store/modules/users/getter-types";
 import { FETCH_USERS } from "@/store/modules/users/action-types";
 import { mapGetters, mapActions } from "vuex";

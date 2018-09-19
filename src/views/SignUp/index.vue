@@ -1,17 +1,17 @@
 <template>
   <div>
-    <sign-in-form></sign-in-form>
+    <sign-up-form></sign-up-form>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import SignInForm from "@/components/SignInForm";
+import SignUpForm from "./components/SignUpForm";
 
 export default {
-  name: "SignIn",
+  name: "SignUp",
   components: {
-    SignInForm
+    SignUpForm
   }
 };
 </script>
