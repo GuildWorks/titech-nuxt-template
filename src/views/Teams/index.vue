@@ -1,13 +1,9 @@
 <template>
-  <div>
-    <v-content>
-      <v-container fill-height>
-        <v-layout justify-center align-center>
-          <team-list :teams="teams"></team-list>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </div>
+  <v-content>
+    <v-container>
+      <team-list :teams="teams"></team-list>
+    </v-container>
+  </v-content>
 </template>
 
 <script>

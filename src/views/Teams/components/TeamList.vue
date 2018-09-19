@@ -1,29 +1,20 @@
 <template>
-  <v-card>
-    <v-container
-      fluid
-      grid-list-md
-    >
-      <v-layout row wrap>
-        <v-flex
-          v-for="team in teams"
-          :key="team.id"
-        >
-          <team-list-element :team="team"></team-list-element>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-card>
+  <v-list subheader>
+    <v-subheader>チーム一覧</v-subheader>
+    <v-list-tile avatar v-for="team in teams" :key="team.id" :to="`/teams/${team.id}`">
+      <v-list-tile-content>
+        <v-list-tile-title v-html="team.name"></v-list-tile-title>
+      </v-list-tile-content>
+      <v-list-tile-action>
+        <v-icon>people</v-icon>
+      </v-list-tile-action>
+    </v-list-tile>
+  </v-list>
 </template>
 
 <script>
-import TeamListElement from "./TeamListElement.vue";
-
 export default {
   name: "TeamList",
-  components: {
-    TeamListElement
-  },
   props: {
     teams: {
       type: Array,
