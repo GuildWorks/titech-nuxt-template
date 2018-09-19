@@ -1,13 +1,8 @@
 import firebase from "firebase";
 import { ON_AUTH_STATE_CHANGED } from "@/store/modules/session/action-types";
+import { SET_LOADING } from "@/store/modules/shared/action-types";
 import store from "@/store";
 import router from "@/router";
-import defaultOptions from "@/storage/options.js";
-import StorageFactory from "@/storage/storage.js";
-
-const localStorage = StorageFactory(
-  Object.assign(defaultOptions, { storageType: "localStorage" })
-);
 
 firebase.initializeApp({
   apiKey: "AIzaSyD1-XpeZoFVg7H3MnRpWJLeSgqCzTg30P8",
@@ -22,10 +17,12 @@ let db = firebase.firestore();
 
 export default {
   initFirebase() {
+    store.dispatch(`shared/${SET_LOADING}`, true);
     auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
   },
 
   signIn(params) {
+    store.dispatch(`shared/${SET_LOADING}`, true);
     auth
       .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
       .then(function() {
@@ -37,15 +34,16 @@ export default {
           })
           .catch(error => {
             alert(error.message);
+            store.dispatch(`shared/${SET_LOADING}`, false);
           });
       })
       .catch(function(error) {
         alert(error.message);
+        store.dispatch(`shared/${SET_LOADING}`, false);
       });
   },
 
   signOut() {
-    localStorage.removeItem(["session", "userInfo"].join("."));
     auth.signOut();
   },
 
@@ -56,7 +54,7 @@ export default {
         .then(response => {
           this.setUserInfo({
             loggedIn: false,
-            uid: response.user.uid,
+            id: response.user.id,
             name: params.name,
             email: params.email,
             image: ""
@@ -82,16 +80,15 @@ export default {
             `session/${ON_AUTH_STATE_CHANGED}`,
             Object.assign({}, _userInfo)
           );
-          localStorage.setItem(
-            ["session", "userInfo"].join("."),
-            JSON.stringify(_userInfo)
-          );
+          store.dispatch(`shared/${SET_LOADING}`, false);
           router.push("/");
         })
         .catch(e => {
+          store.dispatch(`shared/${SET_LOADING}`, false);
           console.log(e);
         });
     } else {
+      store.dispatch(`shared/${SET_LOADING}`, false);
       router.push("/sign_in");
     }
   },

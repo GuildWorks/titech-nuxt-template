@@ -2,17 +2,10 @@ import actions from "./actions";
 import getters from "./getters";
 import mutations from "./mutations";
 
-export const session = {
+export const shared = {
   namespaced: true,
   state: {
-    userSession: {
-      user: {
-        loggedIn: false,
-        id: "",
-        name: "",
-        image: ""
-      }
-    }
+    loading: false
   },
   actions,
   getters,

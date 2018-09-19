@@ -8,17 +8,13 @@ import SignUpComplete from "./views/SignUpComplete.vue";
 import User from "./views/User.vue";
 import Teams from "./views/teams/index.vue";
 import Layout from "@/components/Layout.vue";
-import defaultOptions from "@/storage/options.js";
-import StorageFactory from "@/storage/storage.js";
+import store from "@/store";
+import { LOGGED_IN } from "@/store/modules/session/getter-types";
 
 Vue.use(Router);
 
-const localStorage = StorageFactory(
-  Object.assign(defaultOptions, { storageType: "localStorage" })
-);
-
 const isLogged = () => {
-  return !!localStorage.getItem(["session", "userInfo"].join("."));
+  return store.getters[`session/${LOGGED_IN}`];
 };
 
 const router = new Router({

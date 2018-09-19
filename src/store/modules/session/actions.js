@@ -6,7 +6,8 @@ export default {
   [types.SIGN_IN](state, { email, password }) {
     return _signIn(email, password);
   },
-  [types.SIGN_OUT]() {
+  [types.SIGN_OUT]({ commit }) {
+    commit(mutationTypes.SIGN_OUT);
     return _signOut();
   },
   [types.SIGN_UP](state, { name, email, password }) {
