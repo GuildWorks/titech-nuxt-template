@@ -25,7 +25,7 @@ export default {
           .then(val => {
             const _userInfo = {
               loggedIn: true,
-              uid: user.uid,
+              id: user.uid,
               name: val.name,
               image: val.image
             };
@@ -214,6 +214,64 @@ export default {
           resolve(team);
         })
         .catch(reject);
+    });
+  },
+
+  fetchMessages(teamId, callback) {
+    if (auth.currentUser) {
+      db.collection("messages")
+        .where("teamId", "==", teamId)
+        .orderBy("createdAt", "desc")
+        .onSnapshot(snapshot => {
+          const messageRefs = snapshot.docs.map(async messageRef => {
+            const message = messageRef.data();
+            message.id = messageRef.id;
+            message.user = await this.fetchUser(message.userId);
+            return message;
+          });
+          Promise.all(messageRefs).then(messages => {
+            callback(messages);
+          });
+        });
+    }
+  },
+
+  createMessage(userId, teamId, content) {
+    return new Promise((resolve, reject) => {
+      if (auth.currentUser) {
+        const createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        db.collection("messages")
+          .add({
+            userId: userId,
+            teamId: teamId,
+            content: content,
+            createdAt: createdAt
+          })
+          .then(docRef => {
+            resolve(docRef.id);
+          })
+          .catch(error => {
+            console.error("Error adding document: ", error);
+            reject(error);
+          });
+      }
+    });
+  },
+
+  deleteMessage(messageId) {
+    return new Promise((resolve, reject) => {
+      if (auth.currentUser) {
+        db.collection("messages")
+          .doc(messageId)
+          .delete()
+          .then(() => {
+            resolve();
+          })
+          .catch(error => {
+            console.error("Error removing document: ", error);
+            reject(error);
+          });
+      }
     });
   }
 };

@@ -9,10 +9,9 @@
         v-for="(message, index) in messages"
         :key="index"
         avatar
-        @click=""
       >
         <v-list-tile-avatar>
-          <img :src="message.user.image">
+          <img :src="userImage(message.user)">
         </v-list-tile-avatar>
 
         <v-list-tile-content>
@@ -20,8 +19,9 @@
         </v-list-tile-content>
 
         <v-list-tile-action>
-          <v-list-tile-action-text>2018/09/09 10:10</v-list-tile-action-text>
-          <v-icon>
+          <v-list-tile-action-text>{{ message.createdAt | date }}</v-list-tile-action-text>
+
+          <v-icon v-show="message.user.id === currentUser.id" @click="deleteMessage(message.id)">
             delete
           </v-icon>
         </v-list-tile-action>
@@ -31,12 +31,27 @@
 </template>
 
 <script>
+import { DELETE_MESSAGE } from "@/store/modules/messages/action-types";
+import { mapActions } from "vuex";
+
 export default {
   name: "TeamMemberList",
   props: {
+    currentUser: {
+      type: Object,
+      required: true
+    },
     messages: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    ...mapActions("messages", {
+      deleteMessage: DELETE_MESSAGE
+    }),
+    userImage(user) {
+      return user.image ? user.image : "/blank-profile.png";
     }
   }
 };
