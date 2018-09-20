@@ -7,7 +7,7 @@ export default {
   [types.RECEIVE_USER](state, user) {
     if (state.all.map(_user => _user.id).includes(user.id)) {
       state.all = state.all.map(_user => {
-        if (_user.id === Number(user.id)) return user;
+        if (_user.id === user.id) return user;
         return _user;
       });
       return;

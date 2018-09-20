@@ -1,7 +1,10 @@
 import * as types from "./getter-types";
 
 export default {
-  [types.ACCESS_TOKEN](state) {
-    return state.userSession.accessToken;
+  [types.LOGGED_IN](state) {
+    return state.userSession.user.loggedIn;
+  },
+  [types.CURRENT_USER](state) {
+    return state.userSession.user;
   }
 };

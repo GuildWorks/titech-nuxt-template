@@ -5,6 +5,6 @@ export default {
     return state.all;
   },
   [types.TEAM](state) {
-    return id => state.all.find(team => team.id === Number(id));
+    return id => state.all.find(team => team.id === id);
   }
 };

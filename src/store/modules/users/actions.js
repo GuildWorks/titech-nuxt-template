@@ -1,23 +1,21 @@
 import * as types from "./action-types";
 import * as mutationTypes from "./mutation-types";
-import api from "@/api";
+import Firebase from "@/api/firebase";
 
 export default {
   [types.FETCH_USERS]({ commit }) {
-    api.users
-      .getData()
+    Firebase.fetchUsers()
       .then(response => {
-        commit(mutationTypes.RECEIVE_USERS, response.data);
+        commit(mutationTypes.RECEIVE_USERS, response);
       })
       .catch(error => {
         console.log(error);
       });
   },
-  [types.FETCH_USER]({ commit }, userId) {
-    api.users
-      .getDataBy(userId)
+  [types.FETCH_USER]({ commit }, uid) {
+    Firebase.fetchUser(uid)
       .then(response => {
-        commit(mutationTypes.RECEIVE_USER, response.data);
+        commit(mutationTypes.RECEIVE_USER, response);
       })
       .catch(error => {
         console.log(error);

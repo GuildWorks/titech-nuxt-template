@@ -6,7 +6,12 @@ export const session = {
   namespaced: true,
   state: {
     userSession: {
-      accessToken: null
+      user: {
+        loggedIn: false,
+        id: "",
+        name: "",
+        image: ""
+      }
     }
   },
   actions,
