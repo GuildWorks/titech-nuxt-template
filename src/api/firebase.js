@@ -203,10 +203,10 @@ export default {
     });
   },
 
-  fetchTeam(uid) {
+  fetchTeam(teamId) {
     return new Promise((resolve, reject) => {
       db.collection("teams")
-        .doc(uid)
+        .doc(teamId)
         .get()
         .then(async snapshot => {
           const team = snapshot.data();
@@ -214,6 +214,26 @@ export default {
           resolve(team);
         })
         .catch(reject);
+    });
+  },
+
+  joinTeam(teamId, userId) {
+    return new Promise((resolve, reject) => {
+      if (auth.currentUser) {
+        db.collection("users")
+          .doc(userId)
+          .update({
+            team: db.collection("teams").doc(teamId)
+          })
+          .then(response => {
+            console.log("Document successfully updated!");
+            resolve(response);
+          })
+          .catch(error => {
+            console.error("Error updating document: ", error);
+            reject(error);
+          });
+      }
     });
   },
 

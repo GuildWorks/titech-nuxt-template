@@ -20,5 +20,8 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+  [types.JOIN_TEAM](state, { teamId, userId }) {
+    Firebase.joinTeam(teamId, userId);
   }
 };
