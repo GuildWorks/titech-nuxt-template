@@ -29,3 +29,8 @@ $ cp .env.development.sample .env.development
 ```
 $ yarn serve
 ```
+
+## 開発ツール
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Veture](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+- [vue-devtools](https://github.com/vuejs/vue-devtools)
