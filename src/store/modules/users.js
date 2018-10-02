@@ -8,24 +8,12 @@ const users = {
   },
   actions: {
     FETCH_USERS({ commit }) {
-      api
-        .fetchUsers()
-        .then(response => {
-          commit("RECEIVE_USERS", response);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      const response = api.fetchUsers();
+      commit("RECEIVE_USERS", response);
     },
     FETCH_USER({ commit }, uid) {
-      api
-        .fetchUser(uid)
-        .then(response => {
-          commit("RECEIVE_USER", response);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      const response = api.fetchUser(uid);
+      commit("RECEIVE_USER", response);
     }
   },
   getters: {
