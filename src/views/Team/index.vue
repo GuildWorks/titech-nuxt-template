@@ -19,11 +19,11 @@
           <v-flex xs12>
             <team-member-list :users="users"></team-member-list>
           </v-flex>
-          <v-flex xs12>
-            <message-list :currentUser="currentUser" :messages="messages"></message-list>
-          </v-flex>
           <v-flex xs12 v-if="isJoined">
             <message-form :currentUser="currentUser" :teamId="team.id"></message-form>
+          </v-flex>
+          <v-flex xs12>
+            <message-list :currentUser="currentUser" :messages="messages"></message-list>
           </v-flex>
         </v-layout>
       </v-container>

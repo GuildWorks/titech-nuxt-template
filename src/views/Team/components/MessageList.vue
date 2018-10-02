@@ -1,7 +1,7 @@
 <template>
   <v-container
     id="scroll-target"
-    style="max-height: 50vh; margin: 40px 0; max-width: 100%;"
+    style="margin: 40px 0; max-width: 100%;"
     class="scroll-y"
   >
     <v-list>
