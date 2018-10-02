@@ -1,20 +1,24 @@
 <template>
   <v-content>
-    <v-container fill-height>
-      <p>README</p>
-      <p>リンク集</p>
-      <ul>
-        <li><a>github</a></li>
-      </ul>
+    <v-container>
+      <v-layout row>
+        <v-flex xs12>
+          <to-do></to-do>
+        </v-flex>
+      </v-layout>
     </v-container>
   </v-content>
 </template>
 
 <script>
 // @ is an alias to /src
+import ToDo from "./components/ToDo.vue";
 
 export default {
-  name: "Home"
+  name: "Home",
+  components: {
+    ToDo
+  }
 };
 </script>
 
