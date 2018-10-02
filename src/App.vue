@@ -1,24 +1,11 @@
 <template>
   <v-app id="app">
-    <loading v-if="loading" />
-    <router-view v-else />
+    <router-view/>
   </v-app>
 </template>
 
 <script>
-import Loading from "@/components/Loading.vue";
-import { LOADING } from "@/store/modules/shared/getter-types";
-import { mapGetters } from "vuex";
-export default {
-  components: {
-    Loading
-  },
-  computed: {
-    ...mapGetters("shared", {
-      loading: LOADING
-    })
-  }
-};
+export default {};
 </script>
 
 <style lang="scss">

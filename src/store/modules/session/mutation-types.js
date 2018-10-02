@@ -1,2 +1,0 @@
-export const ON_AUTH_STATE_CHANGED = "ON_AUTH_STATE_CHANGED";
-export const SIGN_OUT = "SIGN_OUT";
