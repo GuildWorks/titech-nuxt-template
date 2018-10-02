@@ -48,8 +48,6 @@
 
 
 <script>
-import { USER } from "@/store/modules/users/getter-types";
-import { FETCH_USER } from "@/store/modules/users/action-types";
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "UserProfile",
@@ -60,8 +58,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("users", {
-      user: USER
+    ...mapGetters({
+      user: "users/USER"
     }),
     currentUser() {
       return this.user(this.userId);
@@ -71,8 +69,8 @@ export default {
     this.fetchUser(this.userId);
   },
   methods: {
-    ...mapActions("users", {
-      fetchUser: FETCH_USER
+    ...mapActions({
+      fetchUser: "users/FETCH_USER"
     })
   }
 };

@@ -7,15 +7,14 @@
 
 <script>
 import Loading from "@/components/Loading.vue";
-import { LOADING } from "@/store/modules/shared/getter-types";
 import { mapGetters } from "vuex";
 export default {
   components: {
     Loading
   },
   computed: {
-    ...mapGetters("shared", {
-      loading: LOADING
+    ...mapGetters({
+      loading: "shared/LOADING"
     })
   }
 };

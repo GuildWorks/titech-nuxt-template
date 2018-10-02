@@ -21,12 +21,6 @@
             </v-list-tile-action>
             チーム一覧
           </v-list-tile>
-          <v-list-tile v-on:click="signOut()">
-            <v-list-tile-action>
-              <v-icon>people</v-icon>
-            </v-list-tile-action>
-            ログアウト
-          </v-list-tile>
         </v-list-tile-content>
       </v-list>
     </v-navigation-drawer>
@@ -57,9 +51,6 @@
 </template>
 
 <script>
-import { SIGN_OUT } from "@/store/modules/session/action-types";
-import { mapActions } from "vuex";
-
 export default {
   name: "HeaderToolBar",
   data: () => ({
@@ -67,11 +58,6 @@ export default {
   }),
   props: {
     source: String
-  },
-  methods: {
-    ...mapActions("session", {
-      signOut: SIGN_OUT
-    })
   }
 };
 </script>

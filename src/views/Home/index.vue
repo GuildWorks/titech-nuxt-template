@@ -1,11 +1,7 @@
 <template>
   <v-content>
     <v-container fill-height>
-      <p>README</p>
-      <p>リンク集</p>
-      <ul>
-        <li><a>github</a></li>
-      </ul>
+      <p>Topページです</p>
     </v-container>
   </v-content>
 </template>

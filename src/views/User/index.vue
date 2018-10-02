@@ -15,7 +15,7 @@
 import UserProfile from "./components/UserProfile.vue";
 
 export default {
-  name: "Users",
+  name: "User",
   props: ["userId"],
   components: {
     UserProfile
