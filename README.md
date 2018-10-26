@@ -1,36 +1,57 @@
-# Vue.jsプロジェクト テンプレート
+# Vue.js Project
 
-## インストール手順
+## git install
 
-1. ToDo yarnのインストール
+### [git install(For Windows)](https://gitforwindows.org/)
+
+### git install(For Mac)
+1. Git comes with OS X. Please check the version of git.
 ```$xslt
-$ npm install yarn -g
+$ git --version
 ```
-2. ToDo nodeのインストール(For Mac)
+
+## node install
+
+### node install(For Windows)
+- [install link](https://qiita.com/Masayuki-M/items/840a997a824e18f576d8)
+- [how to install](https://nodejs.org/en/download/)
+
+### node install(For Mac)
+1. install home brew
+
+```$xslt
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+2. install node
 ```$xslt
 $ brew install nodebrew
 $ nodebrew install-binary latest
 ```
-3. yarn install
+
+## yarn install
+1. yarn install
+```$xslt
+$ npm install yarn -g
+```
+2. yarnの確認コマンド（インストールされたyarnのバージョンが表示される）
+```$xslt
+$ yarn --version
+```
+
+## Initial launch
+1. Install libraries
 ```$xslt
 $ yarn install
 ```
 
-## 初回起動準備
-1. envファイルの設定
-```$xslt
-$ cp .env.development.sample .env.development
-```
-※ 設定ファイルを自身の環境と合わせる
 
-## 起動
-
-別タブで `localhost:8080`でフロントのリソースを配信
+## Launch application
 ```
 $ yarn serve
 ```
 
-## 開発ツール
+## Development tools
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Veture](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 - [vue-devtools](https://github.com/vuejs/vue-devtools)
