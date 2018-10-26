@@ -44,7 +44,7 @@ $ yarn --version
 git clone https://github.com/GuildWorks/titech-vue-template.git
 ```
 ```$xslt
-cd titech-vue-template.git
+cd titech-vue-template
 ```
 
 
