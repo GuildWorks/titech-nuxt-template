@@ -64,6 +64,9 @@ $ git checkout -b work-branch refs/tags/work1
 $ yarn serve
 ```
 
+open browser
+[localhost:8080](http://localhost:8080)
+
 ## Development tools
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Veture](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
