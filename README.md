@@ -13,8 +13,8 @@ $ git --version
 ## node install
 
 ### node install(For Windows)
-- [install link](https://qiita.com/Masayuki-M/items/840a997a824e18f576d8)
-- [how to install](https://nodejs.org/en/download/)
+- [install link](https://nodejs.org/en/download/)
+- [how to install](https://qiita.com/Masayuki-M/items/840a997a824e18f576d8)
 
 ### node install(For Mac)
 1. install home brew
@@ -45,6 +45,10 @@ $ yarn --version
 $ yarn install
 ```
 
+## create work branch
+```
+$ git checkout -b work-branch refs/tags/work1
+```
 
 ## Launch application
 ```
