@@ -43,6 +43,10 @@ $ yarn --version
 ```$xslt
 git clone https://github.com/GuildWorks/titech-vue-template.git
 ```
+```$xslt
+cd titech-vue-template.git
+```
+
 
 ## Initial launch
 1. Install libraries
