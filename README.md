@@ -39,6 +39,11 @@ $ npm install yarn -g
 $ yarn --version
 ```
 
+## git clone
+```$xslt
+git clone https://github.com/GuildWorks/titech-vue-template.git
+```
+
 ## Initial launch
 1. Install libraries
 ```$xslt
