@@ -4,6 +4,8 @@ import Home from "@/views/Home";
 import Users from "@/views/Users";
 import User from "@/views/User";
 import Layout from "@/views/Layout";
+import Teams from "@/views/Teams";
+import Team from "@/views/Team";
 
 Vue.use(Router);
 
@@ -29,6 +31,17 @@ const router = new Router({
           path: "/users/:userId",
           name: "user",
           component: User,
+          props: true
+        },
+        {
+          path: "/teams",
+          name: "teams",
+          component: Teams
+        },
+        {
+          path: "/teams/:teamId",
+          name: "team",
+          component: Team,
           props: true
         }
       ]
