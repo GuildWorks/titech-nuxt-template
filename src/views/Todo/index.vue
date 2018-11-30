@@ -3,7 +3,7 @@
     <v-container>
       <v-layout row>
         <v-flex xs12>
-          <h1>PBC #4 TopPage</h1>
+          <to-do></to-do>
         </v-flex>
       </v-layout>
     </v-container>
@@ -11,8 +11,14 @@
 </template>
 
 <script>
+// @ is an alias to /src
+import ToDo from "./components/ToDo.vue";
+
 export default {
-  name: "Home",
+  name: "Todo",
+  components: {
+    ToDo
+  }
 };
 </script>
 

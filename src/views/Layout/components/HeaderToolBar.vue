@@ -9,6 +9,12 @@
       <v-list dense>
         <v-subheader class="mt-3 grey--text text--darken-1">LIST</v-subheader>
         <v-list-tile-content>
+          <v-list-tile to="/">
+            <v-list-tile-action>
+              <v-icon>home</v-icon>
+            </v-list-tile-action>
+            トップ
+          </v-list-tile>
           <v-list-tile to="/users">
             <v-list-tile-action>
               <v-icon>person</v-icon>
@@ -20,6 +26,24 @@
               <v-icon>people</v-icon>
             </v-list-tile-action>
             チーム一覧
+          </v-list-tile>
+          <v-list-tile to="/signup">
+            <v-list-tile-action>
+              <v-icon>add</v-icon>
+            </v-list-tile-action>
+            サインアップ
+          </v-list-tile>
+          <v-list-tile to="/signin">
+            <v-list-tile-action>
+              <v-icon>input</v-icon>
+            </v-list-tile-action>
+            サインイン
+          </v-list-tile>
+          <v-list-tile to="/todo">
+            <v-list-tile-action>
+              <v-icon>list</v-icon>
+            </v-list-tile-action>
+            TODO
           </v-list-tile>
         </v-list-tile-content>
       </v-list>

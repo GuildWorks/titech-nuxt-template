@@ -6,6 +6,10 @@ import User from "@/views/User";
 import Layout from "@/views/Layout";
 import Teams from "@/views/Teams";
 import Team from "@/views/Team";
+import SignUp from "@/views/SignUp";
+import SignIn from "@/views/SignIn";
+import Todo from "@/views/Todo";
+
 
 Vue.use(Router);
 
@@ -43,6 +47,21 @@ const router = new Router({
           name: "team",
           component: Team,
           props: true
+        },
+        {
+          path: "/signup",
+          name: "signup",
+          component: SignUp
+        },
+        {
+          path: "/signin",
+          name: "signin",
+          component: SignIn
+        },
+        {
+          path: "/todo",
+          name: "todo",
+          component: Todo
         }
       ]
     }
