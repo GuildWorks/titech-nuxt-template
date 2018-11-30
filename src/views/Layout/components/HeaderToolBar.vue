@@ -39,6 +39,12 @@
             </v-list-tile-action>
             サインイン
           </v-list-tile>
+          <v-list-tile v-on:click="signout">
+            <v-list-tile-action>
+              <v-icon>clear</v-icon>
+            </v-list-tile-action>
+            サインアウト
+          </v-list-tile>
           <v-list-tile to="/todo">
             <v-list-tile-action>
               <v-icon>list</v-icon>
@@ -82,6 +88,10 @@ export default {
   }),
   props: {
     source: String
+  },
+  methods: {
+    signout: function(){
+    }
   }
 };
 </script>
