@@ -90,6 +90,9 @@ $ cd ~/workspace/<project-name>/
 $ yarn dev
 ```
 
+## Hello world
+[https://ja.nuxtjs.org/examples](https://ja.nuxtjs.org/examples)
+
 ## build & start for production
 ```
 $ cd ~/workspace/<project-name>/
