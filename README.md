@@ -97,7 +97,8 @@ $ yarn dev
 ```
 
 ## install Visual Studio Code
-- [https://code.visualstudio.com/](https://code.visualstudio.com/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Veture](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
 ## Practice1: Hello world
 - [https://ja.nuxtjs.org/examples](https://ja.nuxtjs.org/examples)
@@ -120,6 +121,4 @@ open browser
 [localhost:3000](http://localhost:3000)
 
 ## Development tools
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Veture](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 - [vue-devtools](https://github.com/vuejs/vue-devtools)
