@@ -100,7 +100,7 @@ $ npm run dev
 
 ## install Visual Studio Code
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Veture](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+- [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
 ## Practice1: Hello world
 - [https://ja.nuxtjs.org/examples](https://ja.nuxtjs.org/examples)
