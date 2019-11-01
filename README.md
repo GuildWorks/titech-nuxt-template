@@ -83,11 +83,6 @@ TomoakinoMacBook-Pro:workspace t_koshi$
 $ yarn install
 ```
 
-## create work branch
-```
-$ git checkout -b work-branch refs/tags/work1
-```
-
 ## Launch application
 ```
 $ yarn serve
