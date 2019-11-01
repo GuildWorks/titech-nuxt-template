@@ -1,4 +1,4 @@
-# Nuxt.js Project
+# Nuxt.js Project edit
 
 ## git install
 
