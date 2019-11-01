@@ -19,24 +19,13 @@ $ git --version
 ### node install(For Mac)
 1. install home brew
 
-```$xslt
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+- [install link](https://nodejs.org/en/download/)
 
-2. install node
-```$xslt
-$ brew install nodebrew
-$ nodebrew install-binary latest
+### node version
+チーム内でnodeのバージョンが一致していることを確認してください
+Please align node versions with your team
 ```
-
-## yarn install
-1. yarn install
-```$xslt
-$ npm install yarn -g
-```
-2. yarnの確認コマンド（インストールされたyarnのバージョンが表示される）
-```$xslt
-$ yarn --version
+node --version
 ```
 
 ## git clone
