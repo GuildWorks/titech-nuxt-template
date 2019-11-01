@@ -12,6 +12,8 @@ $ git --version
 
 ### git概要
 - [公式ドキュメント](https://www.git-scm.com/doc)
+- [GitHub Cheat Sheet](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf)
+- [Visual Git Cheat Sheet](https://ndpsoftware.com/git-cheatsheet.html#loc=local_repo;)
 - [https://qiita.com/gilly/items/aed8eab37d0f72d6106d](https://qiita.com/gilly/items/aed8eab37d0f72d6106d)
 - [https://qiita.com/nh321/items/6517b0964c6ed1685ecf](https://qiita.com/nh321/items/6517b0964c6ed1685ecf)
 
