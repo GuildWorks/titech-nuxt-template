@@ -107,8 +107,8 @@ $ yarn dev
 - [https://ja.nuxtjs.org/guide/routing](https://ja.nuxtjs.org/guide/routing)
 - [Dynamic Routes](https://vueschool.io/lessons/nuxtjs-dynamic-routes?friend=nuxt)
 - [source code](https://github.com/vueschool/nuxt-fundamentals/blob/817ec3205b3085e1bf2f1d6c9d5ca1be21736494/pages/posts/_id.vue)
-1. `posts/_id.vue` に投稿詳細を作成してみよう
-2. `index.vue` に投稿一覧を作成してみよう
+1. `pages/posts/_id.vue` に投稿詳細を作成してみよう
+2. `pages/index.vue` に静的な投稿一覧を作成し、投稿詳細へ遷移できるようにしてみよう
 
 ## build & start for production
 ```
