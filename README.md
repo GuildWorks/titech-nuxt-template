@@ -21,6 +21,7 @@ $ git --version
 
 ### node version
 チーム内でnodeのバージョンが一致していることを確認してください
+
 Please align node versions with your team
 ```
 node --version
