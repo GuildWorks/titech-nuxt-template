@@ -98,17 +98,17 @@ $ yarn dev
 ```
 
 ## install Visual Studio Code
-[https://code.visualstudio.com/](https://code.visualstudio.com/)
+- [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
 ## Practice1: Hello world
-[https://ja.nuxtjs.org/examples](https://ja.nuxtjs.org/examples)
+- [https://ja.nuxtjs.org/examples](https://ja.nuxtjs.org/examples)
 
 ## Practice2: Routing
-[https://ja.nuxtjs.org/guide/routing](https://ja.nuxtjs.org/guide/routing)
-[Dynamic Routes](https://vueschool.io/lessons/nuxtjs-dynamic-routes?friend=nuxt)
+- [https://ja.nuxtjs.org/guide/routing](https://ja.nuxtjs.org/guide/routing)
+- [Dynamic Routes](https://vueschool.io/lessons/nuxtjs-dynamic-routes?friend=nuxt)
+- [source code](https://github.com/vueschool/nuxt-fundamentals/blob/817ec3205b3085e1bf2f1d6c9d5ca1be21736494/pages/posts/_id.vue)
 1. `posts/_id.vue` に投稿詳細を作成してみよう
 2. `index.vue` に投稿一覧を作成してみよう
-[source code](https://github.com/vueschool/nuxt-fundamentals/blob/817ec3205b3085e1bf2f1d6c9d5ca1be21736494/pages/posts/_id.vue)
 
 ## build & start for production
 ```
