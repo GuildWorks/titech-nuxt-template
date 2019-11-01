@@ -88,12 +88,14 @@ nvert selection)
 ```$xslt
 $ cd ~/workspace/<project-name>/
 $ yarn install
+$ npm install
 ```
 
 ## Launch application for local
 ```
 $ cd ~/workspace/<project-name>/
 $ yarn dev
+$ npm run dev
 ```
 
 ## install Visual Studio Code
