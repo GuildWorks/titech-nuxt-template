@@ -93,8 +93,11 @@ $ yarn dev
 ## install Visual Studio Code
 [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
-## Hello world
+## Practice1: Hello world
 [https://ja.nuxtjs.org/examples](https://ja.nuxtjs.org/examples)
+
+## Practice2: Routing
+[https://ja.nuxtjs.org/guide/routing](https://ja.nuxtjs.org/guide/routing)
 
 ## build & start for production
 ```
