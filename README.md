@@ -17,8 +17,6 @@ $ git --version
 - [how to install](https://qiita.com/Masayuki-M/items/840a997a824e18f576d8)
 
 ### node install(For Mac)
-1. install home brew
-
 - [install link](https://nodejs.org/en/download/)
 
 ### node version
