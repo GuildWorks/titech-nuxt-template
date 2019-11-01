@@ -80,16 +80,18 @@ TomoakinoMacBook-Pro:workspace t_koshi$
 ## Initial launch
 1. Install libraries
 ```$xslt
+$ cd ~/workspace/<project-name>/
 $ yarn install
 ```
 
 ## Launch application
 ```
-$ yarn serve
+$ cd ~/workspace/<project-name>/
+$ yarn dev
 ```
 
 open browser
-[localhost:8080](http://localhost:8080)
+[localhost:3000](http://localhost:3000)
 
 ## Development tools
 - [Visual Studio Code](https://code.visualstudio.com/)
