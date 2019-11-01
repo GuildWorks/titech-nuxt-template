@@ -47,7 +47,7 @@ $ cd ~/workspace/
 ### プロジェクトの雛形作成の実行例
 #### プロジェクト名が `sample` のとき
 ```
-TomoakinoMacBook-Pro:workspace t_koshi$ npx create-nuxt-app sample
+$ npx create-nuxt-app sample
 npx: installed 350 in 11.522s
 
 create-nuxt-app v2.11.1
@@ -80,7 +80,6 @@ nvert selection)
 	yarn build
 	yarn start
 
-TomoakinoMacBook-Pro:workspace t_koshi$
 ```
 
 
