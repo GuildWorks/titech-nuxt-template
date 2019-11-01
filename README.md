@@ -84,10 +84,17 @@ $ cd ~/workspace/<project-name>/
 $ yarn install
 ```
 
-## Launch application
+## Launch application for local
 ```
 $ cd ~/workspace/<project-name>/
 $ yarn dev
+```
+
+## build & start for production
+```
+$ cd ~/workspace/<project-name>/
+$ yarn build
+$ yarn start
 ```
 
 open browser
