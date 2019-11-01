@@ -27,13 +27,15 @@ Please align node versions with your team
 node --version
 ```
 
-## git clone
-```$xslt
-git clone https://github.com/GuildWorks/titech-vue-template.git
+## install nuxt
+### 作業ディレクトリの作成
 ```
-```$xslt
-cd titech-vue-template
+$ mkdir ~/workspace
+$ cd ~/workspace/
 ```
+
+### create-nuxt-app を使用してプロジェクトの雛形を作成
+[https://ja.nuxtjs.org/guide/installation/](https://ja.nuxtjs.org/guide/installation/)
 
 
 ## Initial launch
