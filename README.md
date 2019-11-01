@@ -98,6 +98,9 @@ $ yarn dev
 
 ## Practice2: Routing
 [https://ja.nuxtjs.org/guide/routing](https://ja.nuxtjs.org/guide/routing)
+[Dynamic Routes](https://vueschool.io/lessons/nuxtjs-dynamic-routes?friend=nuxt)
+1. `index.vue` に投稿一覧を作成してみよう
+2. `posts/_id.vue` に投稿詳細を作成してみよう
 
 ## build & start for production
 ```
