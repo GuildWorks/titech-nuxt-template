@@ -90,6 +90,9 @@ $ cd ~/workspace/<project-name>/
 $ yarn dev
 ```
 
+## install Visual Studio Code
+[https://code.visualstudio.com/](https://code.visualstudio.com/)
+
 ## Hello world
 [https://ja.nuxtjs.org/examples](https://ja.nuxtjs.org/examples)
 
