@@ -17,8 +17,11 @@ $ git --version
 - [https://qiita.com/gilly/items/aed8eab37d0f72d6106d](https://qiita.com/gilly/items/aed8eab37d0f72d6106d)
 - [https://qiita.com/nh321/items/6517b0964c6ed1685ecf](https://qiita.com/nh321/items/6517b0964c6ed1685ecf)
 
-### githubアカウントの作成
+### github
+#### Signing up for a new GitHub account
 [https://github.com/join](https://github.com/join)
+#### Create a Repository
+[https://guides.github.com/activities/hello-world/#repository](https://guides.github.com/activities/hello-world/#repository)
 
 ## node install
 
