@@ -17,6 +17,9 @@ $ git --version
 - [https://qiita.com/gilly/items/aed8eab37d0f72d6106d](https://qiita.com/gilly/items/aed8eab37d0f72d6106d)
 - [https://qiita.com/nh321/items/6517b0964c6ed1685ecf](https://qiita.com/nh321/items/6517b0964c6ed1685ecf)
 
+### githubアカウントの作成
+[https://github.com/join](https://github.com/join)
+
 ## node install
 
 ### node install(For Windows)
