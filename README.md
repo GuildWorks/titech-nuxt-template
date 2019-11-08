@@ -85,16 +85,26 @@ nvert selection)
 
 ## Initial launch
 1. Install libraries
+#### yarn
 ```$xslt
 $ cd ~/workspace/<project-name>/
 $ yarn install
+```
+#### npm
+```$xslt
+$ cd ~/workspace/<project-name>/
 $ npm install
 ```
 
 ## Launch application for local
+#### yarn
 ```
 $ cd ~/workspace/<project-name>/
 $ yarn dev
+```
+#### npm
+```
+$ cd ~/workspace/<project-name>/
 $ npm run dev
 ```
 
