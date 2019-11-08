@@ -116,8 +116,8 @@ $ npm run dev
 - [https://ja.nuxtjs.org/examples](https://ja.nuxtjs.org/examples)
 1. `pages/index.vue` を編集して、トップページに「Hello World！」と表示してみよう
 2. `pages/about.vue` を新規作成して、 [http://localhost:3000/about](http://localhost:3000/about) に「About Page」と表示してみよう
-3. `pages/index.vue` を編集して、トップページからAbout Pageへページ遷移できるようにしてみよう
-4. `pages/about.vue` を編集して、About Pageからトップページへページ遷移できるようにしてみよう
+3. `pages/index.vue` を編集して、トップページから [http://localhost:3000/about](http://localhost:3000/about) へページ遷移できるようにしてみよう
+4. `pages/about.vue` を編集して、 [http://localhost:3000/about](http://localhost:3000/about) からトップページへページ遷移できるようにしてみよう
 5. 新規ページを作成して、トップページからページ遷移できるようにしてみよう
 
 ## Practice2: Routing
